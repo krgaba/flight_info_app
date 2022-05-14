@@ -15,6 +15,9 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	implementation 'org.drools:drools-core:7.59.0.Final'
+	implementation 'org.drools:drools-compiler:7.59.0.Final'
+	implementation 'org.drools:drools-decisiontables:7.59.0.Final'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 }

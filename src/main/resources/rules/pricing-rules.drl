@@ -1,0 +1,142 @@
+import com.ek.flight_info_app.model.DroolsPriceRequest;
+global com.ek.flight_info_app.model.DroolsPriceResponse droolsPriceResponse;
+ 
+dialect "mvel"
+
+rule "Flight number starts with a"
+    when
+        DroolsPriceRequest(firstLetter == "a")
+    then
+        System.out.println("==========Base fare for Flight number starts with A =============");
+        droolsPriceResponse.setBasePrice(400.00)
+end
+
+rule "Flight number starts with b"
+    when
+        DroolsPriceRequest(firstLetter == "b")
+    then
+        System.out.println("==========Base fare for Flight number starts with B =============");
+        droolsPriceResponse.setBasePrice(500.00)
+end
+
+rule "Flight number starts with c"
+    when
+        DroolsPriceRequest(firstLetter == "c")
+    then
+        System.out.println("==========Base fare for Flight number starts with C =============");
+        droolsPriceResponse.setBasePrice(800.00)
+end
+
+rule "Flight number starts with d"
+    when
+        DroolsPriceRequest(firstLetter == "d")
+    then
+        System.out.println("==========Base fare for Flight number starts with D =============");
+        droolsPriceResponse.setBasePrice(900.00)
+end
+
+rule "Flight number starts with e"
+    when
+        DroolsPriceRequest(firstLetter == "e")
+    then
+        System.out.println("==========Base fare for Flight number starts with e =============");
+        droolsPriceResponse.setBasePrice(900.00)
+end
+
+rule "Flight number starts with f"
+    when
+        DroolsPriceRequest(firstLetter == "f")
+    then
+        System.out.println("==========Base fare for Flight number starts with f =============");
+        droolsPriceResponse.setBasePrice(900.00)
+end
+
+rule "Flight number starts with g"
+    when
+        DroolsPriceRequest(firstLetter == "g")
+    then
+        System.out.println("==========Base fare for Flight number starts with g =============");
+        droolsPriceResponse.setBasePrice(1000.00)
+end
+
+rule "Flight number starts with h"
+    when
+        DroolsPriceRequest(firstLetter == "h")
+    then
+        System.out.println("==========Base fare for Flight number starts with h =============");
+        droolsPriceResponse.setBasePrice(1100.00)
+end
+
+rule "Flight number starts with i"
+    when
+        DroolsPriceRequest(firstLetter == "i")
+    then
+        System.out.println("==========Base fare for Flight number starts with i =============");
+        droolsPriceResponse.setBasePrice(1200.00)
+end
+
+rule "Flight number starts with j"
+    when
+        DroolsPriceRequest(firstLetter == "j")
+    then
+        System.out.println("==========Base fare for Flight number starts with j =============");
+        droolsPriceResponse.setBasePrice(1300.00)
+end
+
+rule "Flight number starts with k"
+    when
+        DroolsPriceRequest(firstLetter == "k")
+    then
+        System.out.println("==========Base fare for Flight number starts with k =============");
+        droolsPriceResponse.setBasePrice(1400.00)
+end
+
+rule "Flight number starts with l"
+    when
+        DroolsPriceRequest(firstLetter == "l")
+    then
+        System.out.println("==========Base fare for Flight number starts with l =============");
+        droolsPriceResponse.setBasePrice(850.00)
+end
+
+rule "Flight number starts with m"
+    when
+        DroolsPriceRequest(firstLetter == "m")
+    then
+        System.out.println("==========Base fare for Flight number starts with m =============");
+        droolsPriceResponse.setBasePrice(700.00)
+end
+
+rule "Flight number starts with o, p, q, r, or s"
+    when
+        DroolsPriceRequest(firstLetter == "o" || firstLetter == "p" || firstLetter == "q" || firstLetter == "r" || firstLetter == "s")
+    then
+        System.out.println("==========Base fare for Flight number starts with o, p, q, r, or s =============");
+        droolsPriceResponse.setBasePrice(950.00)
+end
+
+rule "Flight number starts with t, u, v, w, x, y, or z"
+    when
+        DroolsPriceRequest(firstLetter == "t" || firstLetter == "u" || firstLetter == "v" || firstLetter == "w" || firstLetter == "x" || firstLetter == "y" || firstLetter == "z")
+    then
+        System.out.println("==========Base fare for Flight number starts with t, u, v, w, x, y, or z =============");
+        droolsPriceResponse.setBasePrice(760.00)
+end
+
+rule "Holiday season hike"
+    when
+        DroolsPriceRequest(month == 12)
+    then
+        System.out.println("==========Adding holiday season hike=============");
+        droolsPriceResponse.setAdjustment(droolsPriceResponse.getAdjustment() +  300.00)
+end
+
+rule "Summer months hike"
+    when
+        DroolsPriceRequest(month == 6 || month == 7 || month == 8)
+    then
+        System.out.println("==========Summer months hike=============");
+        droolsPriceResponse.setAdjustment(droolsPriceResponse.getAdjustment() +  400.00)
+end
+
+ 

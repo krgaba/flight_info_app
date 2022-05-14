@@ -1,5 +1,7 @@
 package com.ek.flight_info_app.controller;
 
+import com.ek.flight_info_app.model.FlightNumberResponse;
+import com.ek.flight_info_app.model.PriceResponse;
 import com.ek.flight_info_app.service.FlightService;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +20,14 @@ public class FlightController {
     }
 
     @GetMapping("/flight")
-    public Mono<String> getFlightNumber(@RequestParam String date, @RequestParam String departure,
+    public Mono<FlightNumberResponse> getFlightNumber(@RequestParam String date, @RequestParam String departure,
             @RequestParam String arrival) {
-        return flightService.getFlightNumber(date, departure, arrival);
+        return flightService.getFlightNumber(date, departure, arrival)
+                .flatMap(flightNumber -> Mono.just(new FlightNumberResponse(flightNumber)));
     }
 
     @GetMapping("/price")
-    public Mono<String> getPrice(@RequestParam String flightNumber, @RequestParam String date) {
+    public Mono<PriceResponse> getPrice(@RequestParam String flightNumber, @RequestParam String date) {
         return flightService.getPrice(date, flightNumber);
     }
 }
