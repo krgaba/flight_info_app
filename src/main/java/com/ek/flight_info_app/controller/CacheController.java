@@ -18,7 +18,7 @@ public class CacheController {
     CacheService cacheService;
 
     @PutMapping("/clear/{key}")
-    public void clearCache(@PathVariable String key) throws InterruptedException {
+    public void clearCache(@PathVariable String key) {
         cacheService.clearCache(key);
     }
 }

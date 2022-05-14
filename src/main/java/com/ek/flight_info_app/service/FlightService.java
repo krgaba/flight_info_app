@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import com.ek.flight_info_app.client.MockClient;
 import com.ek.flight_info_app.model.DroolsPriceRequest;
+import com.ek.flight_info_app.model.DroolsPriceResponse;
 import com.ek.flight_info_app.model.PriceResponse;
 
 import org.springframework.cache.annotation.Cacheable;
@@ -49,7 +50,7 @@ public class FlightService {
                     priceRequest.setFlighNumber(tuple.getT1());
                     return Mono.just(priceRequest);
                 })
-                .flatMap(droolsService::getPrice)
+                .flatMap(request -> droolsService.getPrice(request, new DroolsPriceResponse()))
                 .flatMap(price -> Mono.just(new PriceResponse(price)));
     }
 }

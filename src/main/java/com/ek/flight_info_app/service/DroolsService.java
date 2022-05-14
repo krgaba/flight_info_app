@@ -17,10 +17,9 @@ public class DroolsService {
         this.kieSession = kieSession;
     }
 
-    public Mono<Double> getPrice(DroolsPriceRequest droolsPriceRequest) {
-        var priceResponse = new DroolsPriceResponse();
+    public Mono<Double> getPrice(DroolsPriceRequest priceRequest, DroolsPriceResponse priceResponse) {
         kieSession.setGlobal("droolsPriceResponse", priceResponse);
-        kieSession.insert(droolsPriceRequest);
+        kieSession.insert(priceRequest);
         kieSession.fireAllRules();
         return Mono.just(priceResponse.calculate());
     }
